@@ -1,0 +1,64 @@
+# create database assignment;
+# use database assignment ;
+
+drop table students;
+drop table courses;
+drop table student_course_mapping;
+drop tABLE roles;
+select * from student_course_mapping;
+select * from courses;
+
+insert into user_role values(1,"admin");
+insert into user_role values(2,"students");
+insert into courses values(1,"science",1,0,'2017-01-01','2017-01-01');
+insert into courses values(2,"evs",1,0,'2017-01-01','2017-01-01');
+insert into courses values(3,"hindi",1,0,'2017-01-01','2017-01-01');
+
+CREATE TABLE `user_role` (
+   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+   `role_name` varchar(16) NOT NULL,
+   PRIMARY KEY (`id`)
+ ) ENGINE=InnoDB AUTO_INCREMENT=15042 DEFAULT CHARSET=utf8;
+
+CREATE TABLE `users` (
+   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+   `username` varchar(16) NOT NULL,
+   `role_id` int(11) unsigned,
+   `password` varchar(16) NOT NULL,
+   `first_name` varchar(16) DEFAULT NULL,
+   `last_name` varchar(16) DEFAULT NULL,
+   `father_name` varchar(20) DEFAULT NULL,
+   `roll_no` int(40) Not NULL,
+   `class_no` varchar(11) NOT NULL,
+   `address` varchar(40) DEFAULT NULL,
+   `section` varchar(100) DEFAULT NULL,
+   `admission_date` date DEFAULT NULL,
+   `is_active` tinyint(1) DEFAULT NULL,
+   `is_delete` tinyint(1) DEFAULT NULL,
+   `modified_datetime` datetime DEFAULT NULL,
+   PRIMARY KEY (`id`),
+   UNIQUE KEY ` user_name` (`username`),
+   CONSTRAINT ` role_id` FOREIGN KEY (`role_id`) REFERENCES `user_role` (`id`)
+ ) ENGINE=InnoDB AUTO_INCREMENT=15042 DEFAULT CHARSET=utf8;
+ 
+ CREATE TABLE `courses` (
+   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+   `name` varchar(16) NOT NULL,
+   `student_enrolled` int(16) DEFAULT NULL,
+   `is_active` tinyint(1) DEFAULT NULL,
+   `created_datetime` datetime DEFAULT NULL,
+   `modified_datetime` datetime DEFAULT NULL,
+   PRIMARY KEY (`id`),
+   UNIQUE KEY ` name` (`name`)
+ ) ENGINE=InnoDB AUTO_INCREMENT=15042 DEFAULT CHARSET=utf8;
+ 
+CREATE TABLE `student_course_mapping` (
+   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+   `student_id` int(11) unsigned NOT NULL,
+   `course_id` int(11) unsigned NOT NULL,
+   PRIMARY KEY (`id`),
+   UNIQUE KEY ` student_id__course_id` (`student_id`,`course_id`),
+   CONSTRAINT `student_id_table` FOREIGN KEY (`student_id`) REFERENCES `users` (`id`),
+   CONSTRAINT ` course_id_table` FOREIGN KEY (`course_id`) REFERENCES `courses` (`id`)
+ ) ENGINE=InnoDB AUTO_INCREMENT=15042 DEFAULT CHARSET=utf8;
+ 

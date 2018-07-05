@@ -1,0 +1,93 @@
+    1.)http://18.222.124.7:80/User_create
+
+    POST
+
+     {"data":{   "username" : "a12345",
+    "role_id" :"2",
+    "password" : "12345",
+    "first_name" : "12345",
+    "last_name" : "12345",
+    "father_name" : "12345",
+    "roll_no" : "12334",
+    "class_no" : "X",
+    "address" : "12345",
+    "section" : "12345",
+    "admission_date" : "2017-01-01"}}
+
+
+    role_id =1 => admin
+    role_id =2 => student
+
+   2.) http://18.222.124.7:80/login')
+    POST
+
+    {
+	"username":"a1234",
+	"password":"12345"
+	}
+
+
+    api.add_resource(FetchCourses, '/fetch_courses')
+   	GET fetch all courses who is rolled < 5
+
+
+
+
+  3.) http://18.222.124.7:80/enable_courses')
+    POST
+
+    {
+    "data":{"username":"a1234",
+             "user_id" : "15045",
+             "course_id" : "3"
+    }
+    }
+
+    username = logged in user
+    user_id = student_id
+    "course_id" : course_id
+
+
+
+4.)http://18.222.124.7:80/Course_create')
+    POST
+
+    {
+    "data":
+    {
+    "course_name":"s.st",
+    "username":"a1234"
+    }
+}
+5.) http://18.222.124.7:80/delete_course')
+
+    DELETE
+
+    {"data":{   "course_id" : "1",
+  "username":"a1234"}}
+
+
+
+6.) http://18.222.124.7:80/Unassign_Course
+
+    PUT
+      {"data":{   "student_id" : "15042",
+            "course_id":3,
+  "username":"a123"}}
+
+
+7.)http://18.222.124.7:80/delete_student')
+    DELETE
+
+     {"data":{   "student_id" : "15042",
+  "username":"a1234"}}
+
+8.)http://18.222.124.7:80/course_by_student/<course_id>')
+     e.g = /course_by_student/3
+
+
+9.)http://18.222.124.7:80/fetch_all_student/<username>
+    username ='ankit'
+
+     pass the admin here not student
+     GET
