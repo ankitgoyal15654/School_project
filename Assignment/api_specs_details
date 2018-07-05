@@ -27,13 +27,13 @@
 	}
 
 
-    api.add_resource(FetchCourses, '/fetch_courses')
-   	GET fetch all courses who is rolled < 5
+  3.)http://18.222.124.7:80/fetch_courses')
+   	GET fetch all courses
 
 
 
 
-  3.) http://18.222.124.7:80/enable_courses')
+  4.) http://18.222.124.7:80/enable_courses')
     POST
 
     {
@@ -49,7 +49,7 @@
 
 
 
-4.)http://18.222.124.7:80/Course_create')
+5.)http://18.222.124.7:80/Course_create')
     POST
 
     {
@@ -59,7 +59,7 @@
     "username":"a1234"
     }
 }
-5.) http://18.222.124.7:80/delete_course')
+6.) http://18.222.124.7:80/delete_course')
 
     DELETE
 
@@ -68,7 +68,7 @@
 
 
 
-6.) http://18.222.124.7:80/Unassign_Course
+7.) http://18.222.124.7:80/Unassign_Course
 
     PUT
       {"data":{   "student_id" : "15042",
@@ -76,17 +76,17 @@
   "username":"a123"}}
 
 
-7.)http://18.222.124.7:80/delete_student')
+8.)http://18.222.124.7:80/delete_student')
     DELETE
 
      {"data":{   "student_id" : "15042",
   "username":"a1234"}}
 
-8.)http://18.222.124.7:80/course_by_student/<course_id>')
+9.)http://18.222.124.7:80/course_by_student/<course_id>')
      e.g = /course_by_student/3
 
 
-9.)http://18.222.124.7:80/fetch_all_student/<username>
+10.)http://18.222.124.7:80/fetch_all_student/<username>
     username ='ankit'
 
      pass the admin here not student
