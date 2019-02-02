@@ -1,0 +1,74 @@
+sudo iptables -t nat -A PREROUTING -p tcp --dport 80 -j REDIRECT --to-port 8080
+
+
+How to run localhost on any network ie public ip:
+
+
+create ec2 instance with aws marketplace linux as centos 7
+use that instance in putty with ppk file
+login as centos 
+check python version
+sudo yum -y update
+sudo yum -y install python-pip lsof
+sudo pip install --upgrade pip
+sudo yum -y install python-pip
+if above command doesnt work
+use:
+ curl "https://bootstrap.pypa.io/get-pip.py" -o "get-pip.py"
+ sudo python get-pip.py
+now install libraries u r using in ur code eg: sudo pip isntall flask
+for install mysql
+sudo yum install mysql-devel gcc gcc-devel python-devel
+sudo easy_install mysql-python
+now sudo yum install git(where you have pushed the code)
+git clone "gitlab link" thn run your code
+
+
+setting up gunicorn
+
+
+Hi 
+i am able to test the svcstatus api and it is working fine 
+$ python masterdata.py &
+$  curl http://127.0.0.1:5000/svcstatus   
+it gives proper results 
+then kill the process and for that 
+$ ps es 
+$ kill -9 <process id of our python execution>
+then install gunicorn 
+$ sudo pip install gunicorn
+then run our service again on port 80 with the following command -
+$  sudo gunicorn -b 0.0.0.0:80 masterdata:app &
+then test 
+sudo lsof -i:80(to check the servers running on that port)
+$ curl http://127.0.0.1/svcstatus   
+also test from outside as port 80 is already exposed 
+test on browser - http://<public IP of the EC2 instance>/svcstatus
+it gives proper result 
+use rest client to test both get and post call 
+all will work 
+
+setting up nginx
+sudo yum install epel-release
+sudo yum -y install nginx
+sudo service nginx status
+sudo service nginx start
+sudo service nginx status
+ls /etc/nginx
+sudo vi /etc/nginx/nginx.conf
+inside location give proxy pass http://127.0.0.1:8080;
+sudo service nginx restart
+sudo vi /var/log/nginx/error.log(to check for error that have occurred)
+sudo rm /var/log/nginx/error.log
+if nginx doesnt work permission denied error thn 
+sudo setsebool httpd_can_network_connect on
+
+
+How to create files in linux terminal
+vi filename
+thn insert 
+thn insert whatever data u need
+thn press escape :wq and then enter
+
+for post request 
+curl -H "Content-Type: text/xml" -d @test.xml -X POST http://127.0.0.1:5000/master
